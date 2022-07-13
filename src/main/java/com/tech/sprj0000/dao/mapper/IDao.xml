@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.tech.sprj0000.dao.IDao">
+
+	<sql id="includeorderby">
+		<choose>
+			<when test="param1==1">
+				ORDER BY ${param2} DESC
+			</when>
+			<when test="param1==2">
+				ORDER BY ${param2} ASC
+			</when>
+		</choose>
+	</sql>
+
+	<sql id="includeorderby1">
+		<choose>
+			<when test="param1==1">
+				ORDER BY EMPNO DESC
+			</when>
+			<when test="param1==2">
+				ORDER BY EMPNO ASC
+			</when>
+		</choose>
+	</sql>
+	<sql id="includeorderby2">
+		<choose>
+			<when test="param1==1">
+				ORDER BY ENAME DESC
+			</when>
+			<when test="param1==2">
+				ORDER BY ENAME ASC
+			</when>
+		</choose>
+	</sql>
+	<sql id="includeorderby3">
+		<choose>
+			<when test="param1==1">
+				ORDER BY HIREDATE DESC
+			</when>
+			<when test="param1==2">
+				ORDER BY HIREDATE ASC
+			</when>
+		</choose>
+	</sql>
+	<sql id="includeorderby4">
+		<choose>
+			<when test="param1==1">
+				ORDER BY ${param2} DESC 
+			</when>
+			<when test="param1==2">
+				ORDER BY ${param2} ASC 
+			</when>
+		</choose>
+	</sql>
+	
+	<select id="list" resultType="com.tech.sprj0000.dto.BTDto">
+		SELECT * FROM EMP
+	</select>
+	
+	<select id="empno" resultType="com.tech.sprj0000.dto.BTDto">
+		SELECT * FROM EMP <include refid="includeorderby" />
+	</select>
+	
+	<select id="ename" resultType="com.tech.sprj0000.dto.BTDto">
+		SELECT * FROM EMP  <include refid="includeorderby" /> 
+	</select>
+	
+	<select id="hiredate" resultType="com.tech.sprj0000.dto.BTDto">
+		SELECT * FROM EMP <include refid="includeorderby" />
+	</select>
+	
+	<select id="sal" resultType="com.tech.sprj0000.dto.BTDto">
+		SELECT * FROM EMP <include refid="includeorderby" />
+	</select>
+
+</mapper>
